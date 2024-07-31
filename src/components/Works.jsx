@@ -1,7 +1,7 @@
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "./styles";
-import { github } from "../assets";
+import { github, youtube, playstore } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
@@ -13,7 +13,15 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  playstore_link,
+  yt_link,
 }) => {
+  const links = [
+    { link: source_code_link, alt: "github", src: github },
+    { link: playstore_link, alt: "playstore", src: playstore },
+    { link: yt_link, alt: "youtube", src: youtube },
+  ];
+
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -31,13 +39,19 @@ const ProjectCard = ({
             className="w-full h-full object-cover rounded-2xl"
           />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-            >
-              <img src={github} alt="github" className="w-1/2 h-1/2" />
-            </div>
+          <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-2">
+            {links.map(
+              ({ link, alt, src }) =>
+                link && (
+                  <div
+                    key={alt}
+                    onClick={() => window.open(link, "_blank")}
+                    className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+                  >
+                    <img src={src} alt={alt} className="w-1/2 h-1/2" />
+                  </div>
+                ),
+            )}
           </div>
         </div>
 
@@ -71,7 +85,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Gather around, it's goopin time
+          Some of my notable projects
         </motion.p>
       </div>
 

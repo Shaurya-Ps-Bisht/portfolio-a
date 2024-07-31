@@ -4,6 +4,8 @@ import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
+import youtube from "./youtube.png";
+import playstore from "./playstore.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -25,6 +27,7 @@ import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import magnimus from "./company/magnimus.jpg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -37,6 +40,8 @@ export {
   mobile,
   web,
   github,
+  youtube,
+  playstore,
   menu,
   close,
   css,
@@ -56,6 +61,7 @@ export {
   shopify,
   starbucks,
   tesla,
+  magnimus,
   carrent,
   jobit,
   tripguide,

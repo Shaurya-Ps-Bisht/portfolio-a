@@ -5,7 +5,7 @@ const Loader = () => {
   const { progress } = useProgress();
   return (
     <Html>
-      <span className="canvas-load"></span>
+      <span className="canvas-loader"></span>
       <p
         style={{
           fontSize: 14,
@@ -14,7 +14,7 @@ const Loader = () => {
           marginTop: 40,
         }}
       >
-        {progress.toFixed(2)}%
+        Lemme Cook {progress.toFixed(2)}%
       </p>
     </Html>
   );
