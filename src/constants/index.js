@@ -231,7 +231,7 @@ const projects = [
   {
     name: "OpenGL Renderer",
     description:
-      "A 3D renderer written in C++ and using the OpenGL api, this renderer is an amalgamation of multiple concepts in Graphics Programming like PBR, Cascaded Shadow Mapping, Image Based Reflections, Skeletal Animations etc.",
+      "A 3D renderer written in C++ and using the OpenGL API, this renderer is an amalgamation of multiple concepts in Graphics Programming like PBR, Cascaded Shadow Mapping, Image Based Reflections, Skeletal Animations etc.",
     tags: [
       {
         name: "CPP",

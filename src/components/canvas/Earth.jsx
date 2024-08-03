@@ -1,5 +1,9 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Suspense, useRef, useMemo } from "react";
+import { Canvas, useLoader, useFrame } from "@react-three/fiber";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+import { smokeTexture, smokeTexture2, github } from "../../assets";
+import * as THREE from "three";
+
 import {
   BakeShadows,
   OrbitControls,
@@ -8,11 +12,94 @@ import {
 } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
-const Earth = () => {
-  const earth = useGLTF("./planet/scene.gltf");
+const Cube = () => {
+  const particlesRef = useRef([]);
+  const smokesRef = useRef([]);
+  const mesh = useRef();
+  const colorMap = useLoader(TextureLoader, smokeTexture);
+  const colorMap2 = useLoader(TextureLoader, smokeTexture2);
+  const clock = useRef(new THREE.Clock());
+  const lightRef = useRef();
+
+  function createParticles() {
+    let particles = [];
+    for (var i = 880; i > 250; i--) {
+      var x = 0.5 * i * Math.cos((4 * i * Math.PI) / 180);
+      var y = 0.5 * i * Math.sin((4 * i * Math.PI) / 180);
+      var z = 0.1 * i;
+      particles[i] = [x, y, z];
+    }
+    return particles;
+  }
+
+  function createSmoke() {
+    let particles = [];
+    for (var i = 0; i < 40; i++) {
+      var x = Math.random() * 1000 - 550;
+      var y = Math.random() * 700 - 400;
+      var z = 25;
+      particles[i] = [x, y, z];
+    }
+    return particles;
+  }
+
+  const particles = createParticles().map((cords, i) => (
+    <mesh
+      key={i}
+      position={cords}
+      rotation-z={Math.random() * 360}
+      ref={(el) => (particlesRef.current[i] = el)}
+    >
+      <planeGeometry args={[250, 250, 1, 1]} />
+      <meshStandardMaterial transparent={true} map={colorMap} />
+    </mesh>
+  ));
+  const smokes = createSmoke().map((cords, i) => (
+    <mesh
+      key={i}
+      position={cords}
+      rotation-z={Math.random() * 360}
+      ref={(el) => (smokesRef.current[i] = el)}
+    >
+      <planeGeometry args={[700, 700, 1, 1]} />
+      <meshStandardMaterial transparent={true} map={colorMap2} opacity={0.3} />
+    </mesh>
+  ));
+
+  useFrame(() => {
+    let delta = clock.current.getDelta();
+    particlesRef.current.forEach((p) => {
+      if (p) {
+        p.rotation.z -= delta * 1.5;
+      }
+    });
+    smokesRef.current.forEach((p) => {
+      if (p) {
+        p.rotation.z -= delta * 0.8;
+      }
+    });
+
+    if (lightRef.current) {
+      if (Math.random() > 0.9) {
+        lightRef.current.power = 350 + Math.random() * 500;
+      }
+    }
+  });
 
   return (
-    <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
+    <>
+      {particles}
+      {smokes}
+      <ambientLight intensity={0.5} />
+      <pointLight
+        ref={lightRef}
+        color={0x4c00b0}
+        intensity={0}
+        distance={600}
+        decay={0.3}
+        position={[0, 0, 250]}
+      />
+    </>
   );
 };
 
@@ -20,18 +107,12 @@ const EarthCanvas = () => {
   return (
     <Canvas
       shadows
-      frameloop="demand"
+      // frameloop="demand"
       gl={{ preserveDrawingBuffer: true }}
-      camera={{ fov: 45, near: 0.1, far: 200, position: [-4, 3, 6] }}
+      camera={{ fov: 80, near: 1, far: 1000, position: [0, 0, 1000] }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          autoRotate
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Earth />
+        <Cube />
       </Suspense>
     </Canvas>
   );

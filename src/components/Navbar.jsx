@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "./styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { linkedin, github, menu, logo, close } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -13,19 +13,41 @@ const Navbar = () => {
       className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
-        >
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Shaurya &nbsp; <span className="sm:block hidden">| Nice</span>
-          </p>
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            onClick={() => {
+              setActive("");
+              window.scrollTo(0, 0);
+            }}
+          >
+            <p className="text-white text-[18px] font-bold cursor-pointer flex">
+              HOME &nbsp;
+            </p>
+          </Link>
+
+          <div
+            onClick={() =>
+              window.open("https://github.com/Shaurya-Ps-Bisht", "_blank")
+            }
+            className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+          >
+            <img src={github} alt="Github" className="w-1/2 h-1/2" />
+          </div>
+          <div
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/shauryabisht2002/",
+                "_blank",
+              )
+            }
+            className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+          >
+            <img src={linkedin} alt="linkedin" className="w-1/2 h-1/2" />
+          </div>
+        </div>
+
         <ul className="list-non hidden sm:flex flex-row gap-10">
           {navLinks.map((Link) => (
             <li
