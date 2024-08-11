@@ -2,6 +2,7 @@ import { Suspense, useRef, useMemo } from "react";
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { smokeTexture, smokeTexture2, github } from "../../assets";
+import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
 import {
@@ -20,14 +21,18 @@ const Cube = () => {
   const colorMap2 = useLoader(TextureLoader, smokeTexture2);
   const clock = useRef(new THREE.Clock());
   const lightRef = useRef();
+  const frameCount = useRef(0);
 
   function createParticles() {
     let particles = [];
+    const probability = isMobile ? 0.2 : 1.0;
     for (var i = 880; i > 250; i--) {
-      var x = 0.5 * i * Math.cos((4 * i * Math.PI) / 180);
-      var y = 0.5 * i * Math.sin((4 * i * Math.PI) / 180);
-      var z = 0.1 * i;
-      particles[i] = [x, y, z];
+      if (Math.random() < probability) {
+        var x = 0.5 * i * Math.cos((4 * i * Math.PI) / 180);
+        var y = 0.5 * i * Math.sin((4 * i * Math.PI) / 180);
+        var z = 0.1 * i;
+        particles.push([x, y, z]);
+      }
     }
     return particles;
   }
@@ -67,21 +72,25 @@ const Cube = () => {
   ));
 
   useFrame(() => {
-    let delta = clock.current.getDelta();
-    particlesRef.current.forEach((p) => {
-      if (p) {
-        p.rotation.z -= delta * 1.5;
-      }
-    });
-    smokesRef.current.forEach((p) => {
-      if (p) {
-        p.rotation.z -= delta * 0.8;
-      }
-    });
+    frameCount.current++;
+    const updateFrequency = isMobile ? 80 : 1;
+    if (frameCount.current % updateFrequency === 0) {
+      let delta = clock.current.getDelta();
+      particlesRef.current.forEach((p) => {
+        if (p) {
+          p.rotation.z -= delta * 1.5;
+        }
+      });
+      smokesRef.current.forEach((p) => {
+        if (p) {
+          p.rotation.z -= delta * 0.8;
+        }
+      });
 
-    if (lightRef.current) {
-      if (Math.random() > 0.9) {
-        lightRef.current.power = 350 + Math.random() * 500;
+      if (lightRef.current) {
+        if (Math.random() > 0.9) {
+          lightRef.current.power = 350 + Math.random() * 500;
+        }
       }
     }
   });

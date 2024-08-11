@@ -23,6 +23,9 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import opengl from "./tech/Opengl-logo.svg.png";
+import cpp from "./tech/6132222.png";
+import vulkn from "./tech/vulkan-icon-512x146-8mr6hswy.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -33,6 +36,7 @@ import magnimus from "./company/magnimus.jpg";
 import carrent from "./notTitanfall3.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import campusConnect from "./comment.jpeg";
 
 import smokeTexture from "./others/smoke-particle.png";
 import smokeTexture2 from "./others/smoke-particle2.png";
@@ -62,6 +66,9 @@ export {
   tailwind,
   typescript,
   threejs,
+  vulkn,
+  cpp,
+  opengl,
   meta,
   shopify,
   starbucks,
@@ -69,6 +76,7 @@ export {
   magnimus,
   carrent,
   jobit,
+  campusConnect,
   tripguide,
   smokeTexture,
   smokeTexture2,

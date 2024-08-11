@@ -43,20 +43,16 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
-        My name is Kira Yoshikage. I'm 33 years old. My house is in the
-        northeast section of Morioh, where all the villas are, and I am not
-        married. I work as an employee for the Kame Yu department stores, and I
-        get home every day by 8 PM at the latest. I don't smoke, but I
-        occasionally drink. I'm in bed by 11 PM, and make sure I get eight hours
-        of sleep, no matter what. After having a glass of warm milk and doing
-        about twenty minutes of stretches before going to bed, I usually have no
-        problems sleeping until morning. Just like a baby, I wake up without any
-        fatigue or stress in the morning. I was told there were no issues at my
-        last check-up. I'm trying to explain that I'm a person who wishes to
-        live a very quiet life. I take care not to trouble myself with any
-        enemies, like winning and losing, that would cause me to lose sleep at
-        night. That is how I deal with society, and I know that is what brings
-        me happiness. Although, if I were to fight I wouldn't lose to anyone
+        I am a recent graduate with a passion for graphics programming and
+        shader development. My background includes web app development, neural
+        network modeling, and object-oriented programming. I am also experienced
+        with PostgreSQL and have a strong foundation in DevOps practices. With a
+        keen interest in optimizing and customizing development environments, I
+        am always exploring new tools and technologies. I thrive on learning
+        quickly and am excited about innovative projects. I am actively seeking
+        opportunities and eager to collaborate with others. Feel free to reach
+        out to me via the contact form below or connect with me on LinkedIn,
+        available in the navigation bar.{" "}
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

@@ -21,7 +21,7 @@ const Hero = () => {
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I develop 3D graphics, websites and
-            <br className="sm:block hidden" /> also Neural Network models.
+            <br className="sm:block hidden" /> Neural Network models.
           </p>
         </div>
       </div>

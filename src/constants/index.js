@@ -7,6 +7,9 @@ import {
   typescript,
   html,
   css,
+  cpp,
+  vulkn,
+  opengl,
   reactjs,
   redux,
   tailwind,
@@ -22,6 +25,7 @@ import {
   shopify,
   carrent,
   jobit,
+  campusConnect,
   tripguide,
   threejs,
 } from "../assets";
@@ -66,12 +70,8 @@ const services = [
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
+    name: "C++",
+    icon: cpp,
   },
   {
     name: "JavaScript",
@@ -86,10 +86,6 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
     name: "Tailwind CSS",
     icon: tailwind,
   },
@@ -102,16 +98,21 @@ const technologies = [
     icon: mongodb,
   },
   {
+    name: "Vulkan",
+    icon: vulkn,
+  },
+  {
+    name: "OpenGL",
+    icon: opengl,
+  },
+
+  {
     name: "Three JS",
     icon: threejs,
   },
   {
     name: "git",
     icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
   },
   {
     name: "docker",
@@ -185,19 +186,19 @@ const experiences = [
       "Developed mini-games and effects using MetaSpark and JavaScript as the scripting language.",
     ],
   },
-  {
-    title: "Unemployed",
-    company_name: "Home",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "April 2024 - Present",
-    points: [
-      "There's a grain of truth in every joke, except this section is completely and objectively true.",
-      "This was created to fill up the void left by the unfortuante lack of Experience by myself.",
-      "It serves the purpose of showcasing the design of the website better.",
-      "I think four points are enough, right?",
-    ],
-  },
+  // {
+  //   title: "Unemployed",
+  //   company_name: "Home",
+  //   icon: meta,
+  //   iconBg: "#E6DEDD",
+  //   date: "April 2024 - Present",
+  //   points: [
+  //     "There's a grain of truth in every joke, except this section is completely and objectively true.",
+  //     "This was created to fill up the void left by the unfortuante lack of Experience by myself.",
+  //     "It serves the purpose of showcasing the design of the website better.",
+  //     // "I think four points are enough, right?",
+  //   ],
+  // },
 ];
 
 const testimonials = [
@@ -231,7 +232,7 @@ const projects = [
   {
     name: "OpenGL Renderer",
     description:
-      "A 3D renderer written in C++ and using the OpenGL API, this renderer is an amalgamation of multiple concepts in Graphics Programming like PBR, Cascaded Shadow Mapping, Image Based Reflections, Skeletal Animations etc.",
+      "A 3D renderer written in C++ using the OpenGL API, this project integrates various advanced graphics programming concepts such as Physically Based Rendering (PBR), Cascaded Shadow Mapping, Image-Based Reflections, and Skeletal Animations.",
     tags: [
       {
         name: "CPP",
@@ -253,18 +254,18 @@ const projects = [
   {
     name: "Campus InOutMgmt",
     description:
-      "A mobile application developed to ease and digitize the entry exit process for my College.",
+      "A mobile application developed to ease and digitize the entry exit process for my College. Designed a user-friendly interface with QR code generation, smooth access management.",
     tags: [
       {
-        name: "react",
+        name: "python",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "django",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "flutter",
         color: "pink-text-gradient",
       },
     ],
@@ -273,25 +274,29 @@ const projects = [
       "https://play.google.com/store/apps/details?id=com.dep.my_gate_app&hl=en_IN&pli=1",
   },
   {
-    name: "Trip Guide",
+    name: "Campus Connect",
     description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      "Developed a social media platform tailored for college communities, inspired by Reddit. The backend is powered by Node.js and PostgreSQL, ensuring robust performance and scalability.",
     tags: [
       {
-        name: "nextjs",
+        name: "reactjs",
         color: "blue-text-gradient",
       },
       {
-        name: "supabase",
+        name: "nodejs",
         color: "green-text-gradient",
       },
       {
-        name: "css",
+        name: "postgresql",
         color: "pink-text-gradient",
       },
+      {
+        name: "jest",
+        color: "purple-text-gradient",
+      },
     ],
-    image: tripguide,
-    source_code_link: "https://github.com/",
+    image: campusConnect,
+    source_code_link: "https://github.com/shilu143/SoftwareEngineeringProject",
   },
 ];
 
